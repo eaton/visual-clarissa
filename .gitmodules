@@ -1,0 +1,3 @@
+[submodule "samuel-richardson_clarissa"]
+	path = samuel-richardson_clarissa
+	url = git@github.com:standardebooks/samuel-richardson_clarissa.git
