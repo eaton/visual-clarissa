@@ -1,14 +1,19 @@
 import { pgTable as table } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 
-export const doc = table("doc", {
+export const docs = table("docs", {
   docId: t.text().primaryKey(),
   parent: t.text(),
   title: t.text(),
   xml: t.text().notNull(),
 });
 
-export const person = table("person", {
+export const notes = table("notes", {
+  noteId: t.text().primaryKey(),
+  xml: t.text().notNull(),
+});
+
+export const people = table("people", {
   personId: t.text().primaryKey(),
   name: t.text().notNull(),
   given: t.text(),
@@ -18,24 +23,23 @@ export const person = table("person", {
   notes: t.text(),
 });
 
-export const relation = table("relation", {
+export const relations = table("relations", {
   relationId: t.serial(),
-  from: t.text().notNull().references(() => person.personId),
+  source: t.text().notNull().references(() => people.personId),
   rel: t.text().notNull(),
-  to: t.text().notNull().references(() => person.personId),
+  target: t.text().notNull().references(() => people.personId),
   notes: t.text(),
 });
 
-export const letter = table("letter", {
-  letterId: t.serial().primaryKey(),
+export const letters = table("letters", {
+  docId: t.text().primaryKey().references(() => docs.docId),
+  writer: t.text().references(() => people.personId),
+  sender: t.text().references(() => people.personId),
+  recipient: t.text().references(() => people.personId),
 
-  docId: t.text().references(() => doc.docId),
-  from: t.text().references(() => person.personId),
-  to: t.text().references(() => person.personId),
-
-  writer: t.text().references(() => person.personId),
   date: t.date({ mode: 'string' }),
-  words: t.integer().default(0),
+  words: t.integer(),
+  sentiment: t.decimal(),
 
   title: t.text(),
   dateline: t.text(),
@@ -46,7 +50,7 @@ export const letter = table("letter", {
 });
 
 /*
-export const embedding = table("embedding", {
+export const embeddings = table("embeddings", {
   id: t.serial().primaryKey(),
   docId: t.text().references(() => document.docId),
   order: t.integer().default(0),

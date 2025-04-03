@@ -34,5 +34,5 @@ for (const file of chapters.find({ matching: ['letter-*.xhtml'] })) {
 }
 
 console.log(`${documents.length} letters extracted`);
-const results = await db.insert(t.doc).values(documents);
-console.log(`${results.length} letters inserted`);
+const results = await db.insert(t.docs).values(documents).onConflictDoNothing();
+console.log(`${results.count ?? 'No'} letters inserted`);
