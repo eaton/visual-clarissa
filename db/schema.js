@@ -21,11 +21,24 @@ export const letters = table("letters", {
   day: t.date({ mode: 'string' }),
   period: t.text(),
   place: t.text(),
-
-  properties: t.jsonb().default({}),
 });
 
 export const recipients = table("recipients", {
   letter: t.text().references(() => letters.id),
   person: t.text().references(() => people.id),
 });
+
+export const stats = table("stats", {
+  letter: t.text().references(() => letters.id),
+
+  salutation: t.text(),
+  valediction: t.text(),
+  signature: t.text(),
+
+  words: t.integer(),
+  sentences: t.integer(),
+  sentiment: t.decimal(),
+  
+  // embedding: t.vector({ dimensions: 768 })
+});
+

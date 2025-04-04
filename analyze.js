@@ -4,36 +4,49 @@ import winkNLP from 'wink-nlp';
 import model from 'wink-eng-lite-web-model';
 import { htmlToText } from 'html-to-text';
 import jetpack from 'fs-jetpack';
-
 import { superTrim } from './util.js';
 
+import * as t from './db/schema.js';
+import { connect } from './db/connection.js';
+
 // Read in XML for each letter
+
+const nlp = winkNLP(model, [ 'sbd', 'pos', 'negation', 'sentiment' ]);
+const its = nlp.its;
+const as = nlp.as;
 
 const dir = jetpack.dir('./data/xml');
 
 // Loop through the self-contained letters only; for this analysis we don't want
 // to skew attribution statistics.
+
+const output = [];
+
 for (const file of dir.find({ matching: ['letter.???-???.xml'] })) {
   const xml = dir.read(file);
+  if (!xml) continue;
   const text = htmlToText(xml, { wordwrap: false });
 
   const id = file.split('.')[1];
-  const data = {
-    ...getLetterChunks(xml),
-    ...getLetterStats(text),
-    embedding: await getEmbedding(text),
-  };
-
-  console.log(data);
-
-  break;
+  try {
+    const data = {
+      letter: id,
+      ...getLetterChunks(xml),
+      ...getLetterStats(text),
+      // embedding: await getEmbedding(text),
+    };
+  
+    output.push(data);
+  } catch (err) {
+    console.log(id, err);
+  }
 }
 
-export function getLetterStats(letter) {
-  const nlp = winkNLP(model, [ 'sbd', 'pos', 'negation', 'sentiment' ]);
-  const its = nlp.its;
-  const as = nlp.as;
-  
+dir.write('output/letters.json', output);
+const db = connect();
+await db.insert(t.stats).values(output).onConflictDoNothing();
+
+export function getLetterStats(letter) {  
   const doc = nlp.readDoc(letter);
 
   const adjectives = doc
@@ -43,9 +56,9 @@ export function getLetterStats(letter) {
 
   return {
     sentences: doc.out(its.readabilityStats).numOfSentences,
-    wordCount: doc.out(its.readabilityStats).numOfWords,
+    words: doc.out(its.readabilityStats).numOfWords,
     sentiment: doc.out(its.readabilityStats).sentiment,
-    adjectives: [...adjectives].sort()
+    // adjectives: [...adjectives].sort()
   }
 }
 
