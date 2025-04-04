@@ -11,25 +11,24 @@
     "url": "https://github.com/eaton/visual-clarissa.git"
   },
   "scripts": {
-    "import:letters": "node ./import-letters.js",
-    "import:people": "node ./import-people.js",
-    "import:notes": "node ./import-notes.js",
-    "process:letters": "node ./process-letters.js",
-    "connect": "node ./db/connection.js"
+    "parse": "node ./parse.js",
+    "import": "node ./import.js",
+    "analyze": "node ./analyze.js",
+    "generate": "node ./generate.js"
   },
   "dependencies": {
-    "@types/node": "^22.13.17",
+    "@eatonfyi/serializers": "^1.2.1",
     "arangojs": "^10.1.1",
-    "better-sqlite3": "^11.9.1",
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.6",
     "drizzle-orm": "^0.41.0",
+    "empty-deep": "^1.0.0",
     "fs-jetpack": "^5.1.0",
+    "html-to-text": "^9.0.5",
+    "ollama": "^0.5.14",
     "pg": "^8.14.1",
-    "typescript": "^5.8.2",
     "wink-eng-lite-web-model": "^1.8.1",
-    "wink-nlp": "^2.3.2",
-    "zod": "^3.24.2"
+    "wink-nlp": "^2.3.2"
   }
 }
