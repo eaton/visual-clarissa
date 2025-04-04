@@ -11,6 +11,7 @@
     "url": "https://github.com/eaton/visual-clarissa.git"
   },
   "scripts": {
+    "flush": "node ./flush.js",
     "parse": "node ./parse.js",
     "import": "node ./import.js",
     "analyze": "node ./analyze.js",
