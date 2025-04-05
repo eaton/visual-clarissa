@@ -29,6 +29,7 @@
     "html-to-text": "^9.0.5",
     "ollama": "^0.5.14",
     "pg": "^8.14.1",
+    "turndown": "^7.2.0",
     "wink-eng-lite-web-model": "^1.8.1",
     "wink-nlp": "^2.3.2"
   }

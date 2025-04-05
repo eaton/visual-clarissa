@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
-import { connect } from "./db/connection.js";
-import * as t from "./db/schema.js";
+import { connect } from "./util.js";
+import * as t from "./drizzle.schema.js";
 
 const db = connect();
 await db.execute(sql`DROP TABLE ${t.stats} CASCADE`);

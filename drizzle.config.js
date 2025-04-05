@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 export default defineConfig({
   dialect: "postgresql",
-  schema: "./db/schema.js",
+  schema: "./drizzle.schema.js",
   out: "./drizzle",
   url: process.env.POSTGRES_URL
 });

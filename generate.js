@@ -1,6 +1,6 @@
 import jetpack from 'fs-jetpack';
-import * as t from './db/schema.js';
-import { connect } from './db/connection.js';
+import { connect } from "./util.js";
+import * as t from "./drizzle.schema.js";
 import { asc, eq } from 'drizzle-orm';
 
 const output = jetpack.dir('./output');

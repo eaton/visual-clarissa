@@ -1,7 +1,18 @@
 import jetpack from 'fs-jetpack';
 import * as cheerio from 'cheerio';
+import TurndownService from 'turndown';
 
 import { generateId } from './util.js';
+import { htmlToText } from 'html-to-text';
+
+const md = new TurndownService({
+  headingStyle: 'atx',
+  hr: '---',
+  emDelimiter: '*',
+  strongDelimiter: '**',
+  linkStyle: 'referenced',
+  linkReferenceStyle: 'shortcut'
+});
 
 const input = jetpack.dir('./samuel-richardson_clarissa/src/epub/text');
 const output = jetpack.dir('./data');
@@ -36,8 +47,12 @@ for (const file of input.find({ matching: ['letter-*.xhtml'] })) {
 
 for (const { id, title, xml, fullXml } of documents) {
   output.dir('xml').write(`letter.${id}.xml`, xml);
+  output.dir('txt').write(`letter.${id}.txt`, htmlToText(xml, { wordwrap: false }));
+  output.dir('md').write(`letter.${id}.md`, md.turndown(xml) + '\n');
   if (fullXml && (xml !== fullXml)) {
     output.dir('xml').write(`letter.${id}.full.xml`, fullXml);
+    output.dir('txt').write(`letter.${id}.full.txt`, htmlToText(fullXml, { wordwrap: false }));
+    output.dir('md').write(`letter.${id}.full.md`, md.turndown(fullXml) + '\n');
   };
   console.log('Wrote letter', id, title ?? '');
 }

@@ -1,4 +1,4 @@
-import { pgTable as table, primaryKey } from "drizzle-orm/pg-core";
+import { pgTable as table } from "drizzle-orm/pg-core";
 import { relations } from 'drizzle-orm';
 import * as t from "drizzle-orm/pg-core";
 
@@ -27,8 +27,7 @@ export const letters = table("letters", {
 export const recipients = table("recipients", {
   letter: t.text().notNull().references(() => letters.id),
   person: t.text().references(() => people.id),
-},
-(t) => [ primaryKey({ columns: [t.userId, t.groupId] }) ]);
+});
 
 export const stats = table("stats", {
   letter: t.text().notNull().references(() => letters.id),
@@ -40,8 +39,6 @@ export const stats = table("stats", {
   words: t.integer(),
   sentences: t.integer(),
   sentiment: t.numeric({ mode: 'number', precision: 3, scale: 2 }),
-  
-  // embedding: t.vector({ dimensions: 768 })
 });
 
 export const statsRelations = relations(stats, ({ one }) => ({

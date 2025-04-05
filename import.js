@@ -2,8 +2,8 @@ import jetpack from 'fs-jetpack';
 import { Csv } from '@eatonfyi/serializers';
 import { emptyDeep } from 'empty-deep';
 
-import * as t from './db/schema.js';
-import { connect } from './db/connection.js';
+import { connect } from "./util.js";
+import * as t from "./drizzle.schema.js";
 
 /**
  * Import people records

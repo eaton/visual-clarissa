@@ -171,6 +171,8 @@ letter,person
 122-000,annabella-howe
 123-000,annabella-howe
 124-000,annabella-howe
+125-000,annabella-howe
+126-000,annabella-howe
 127-000,john-belford
 128-000,clarissa-harlowe
 129-000,annabella-howe
@@ -179,6 +181,9 @@ letter,person
 131-000,john-belford
 132-000,clarissa-harlowe
 133-000,annabella-howe
+134-000,annabella-howe
+134-000,annabella-howe
+135-000,annabella-howe
 136-000,clarissa-harlowe
 137-000,annabella-howe
 138-000,john-belford
@@ -214,6 +219,7 @@ letter,person
 168-000,john-belford
 169-000,robert-lovelace
 170-000,john-belford
+171-000,john-belford
 172-000,robert-lovelace
 173-000,annabella-howe
 173-001,clarissa-harlowe
@@ -236,12 +242,14 @@ letter,person
 189-000,robert-lovelace
 190-000,john-belford
 191-000,john-belford
+191-001,lord-montague
 192-000,robert-lovelace
 193-000,john-belford
 194-000,john-belford
 195-000,annabella-howe
 196-000,clarissa-harlowe
 197-000,clarissa-harlowe
+197-001,mrs-howe
 198-000,john-belford
 199-000,john-belford
 200-000,annabella-howe
@@ -297,8 +305,10 @@ letter,person
 233-004,robert-lovelace
 234-000,john-belford
 235-000,john-belford
-238-001,clarissa-harlowe
-239-001,clarissa-harlowe
+236-000,john-belford
+237-000,john-belford
+238-001,john-belford
+239-001,john-belford
 240-000,john-belford
 241-000,john-belford
 242-000,john-belford
@@ -309,6 +319,7 @@ letter,person
 248-000,john-belford
 249-000,john-belford
 250-000,john-belford
+251-000,john-belford
 252-000,john-belford
 252-001,harriot-lucas
 253-000,john-belford
@@ -324,6 +335,8 @@ letter,person
 261-001,annabella-howe
 261-002,james-harlowe-sr
 261-005,arabella-harlowe
+261-008,robert-lovelace
+261-009,robert-lovelace
 261-011,robert-lovelace
 262-000,john-belford
 263-000,john-belford
@@ -333,6 +346,7 @@ letter,person
 267-000,john-belford
 268-000,john-belford
 269-000,john-belford
+269-001,dorcas-wykes
 270-000,john-belford
 271-000,john-belford
 272-000,john-belford
@@ -413,6 +427,8 @@ letter,person
 345-000,robert-lovelace
 346-000,john-belford
 347-000,john-belford
+348-000,robert-lovelace
+349-000,robert-lovelace
 350-000,john-belford
 351-000,arabella-harlowe
 352-000,annabella-howe
@@ -443,6 +459,7 @@ letter,person
 377-000,judith-norton
 378-000,clarissa-harlowe
 379-000,annabella-howe
+380-000,annabella-howe
 381-000,clarissa-harlowe
 382-000,judith-norton
 383-000,john-belford
@@ -509,6 +526,7 @@ letter,person
 440-000,robert-lovelace
 441-000,robert-lovelace
 442-000,john-belford
+443-000,john-belford
 444-000,john-harlowe
 445-000,robert-lovelace
 446-000,robert-lovelace
@@ -541,6 +559,9 @@ letter,person
 473-000,robert-lovelace
 473-001,clarissa-harlowe
 473-002,annabella-howe
+474-000,robert-lovelace
+475-000,robert-lovelace
+476-000,robert-lovelace
 477-000,richard-mowbray
 478-000,john-belford
 479-000,robert-lovelace
@@ -569,6 +590,10 @@ letter,person
 498-000,richard-mowbray
 499-000,robert-lovelace
 500-000,john-belford
+501-000,john-belford
+501-000,john-belford
+503-000,john-belford
+504-000,john-belford
 505-000,william-morden
 506-000,john-belford
 507-000,james-harlowe-jr
@@ -581,6 +606,7 @@ letter,person
 514-000,robert-lovelace
 515-000,john-belford
 516-000,john-belford
+517-000,william-morden
 518-000,william-morden
 519-000,john-belford
 520-000,john-belford
@@ -602,3 +628,4 @@ letter,person
 535-001,robert-lovelace
 535-002,william-morden
 536-000,john-belford
+537-000,john-belford
